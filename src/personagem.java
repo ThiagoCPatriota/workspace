@@ -1,13 +1,20 @@
 public class personagem {
-    int Hp = 15;
-    int Estamina = 100;
+    int Hp;
+    public int Stamina;
     public String nome;
-    public int hp(int modificacao){
-        Hp -=  modificacao;
-        return Hp;
+
+
+    public personagem(int Hp, int Estamina, String nome){
+        this.Hp = Hp;
+        this.Stamina = Estamina;
+        this.nome = nome;
     }
-    public int Stamina(int modificacao){
-        Estamina -=  modificacao;
-        return Estamina;
+
+    public void hp(){
+        Hp -= 5;
     }
+    public void Stamina(){
+        Stamina -= 20;
+    }
+
 }

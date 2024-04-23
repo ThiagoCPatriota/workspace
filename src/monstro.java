@@ -1,10 +1,17 @@
 public class monstro {
-    int Hp = 15;
-    String nome = "Fabio Novaes";
-    String Arma = "Chifres";
-    public int hp(int modificacao){
-        Hp -=  modificacao;
-        return Hp;
+    public String nome;
+    public String Arma;
+    int Hp;
+
+
+    public monstro(int Hp, String Arma, String nome){
+        this.Hp = Hp;
+        this.Arma = Arma;
+        this.nome = nome;
     }
-    public int ataque = 5;
+
+
+    public void hp(){
+        Hp -= 10;
+    }
 }

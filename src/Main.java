@@ -5,8 +5,8 @@ public class Main {
         Scanner scam = new Scanner(System.in);
         dados dados = new dados();
         menu menu = new menu();
-        personagem perso = new personagem();
-        monstro monstro = new monstro();     
+        personagem perso = new personagem(15, 100, "");
+        monstro monstro = new monstro(15, "Chifres", "Fabio Novaes");     
         int resultmenu = menu.menuprincipal();
         int i = 1;
         if(resultmenu == 1){
@@ -22,8 +22,10 @@ public class Main {
                     "Esquerda (2): Você obseva no chão pegadas seguindo essa direção.\n\n"
                     );
                     int opcao = scam.nextInt();
+                    
                     if (opcao == 2){
-                        System.out.println("Você perdeu 10 de Stamina, Agora sua Stamina total é: " + perso.Stamina(10) +"\n\n\n"+
+                        perso.Stamina();
+                        System.out.println("Você perdeu 20 de Stamina, Agora sua Stamina total é: " + perso.Stamina +"\n\n\n"+
                         "Finalmente você chega no outro lado da bifurcação...\n" +
                         "Mas seguido de um silencio, você escuta gritos na qual te deixa arrepiado dos pés a cabeça.\n" +
                         "Novamente você se encontra em outra bifurcação, mas onde uma deveria háver passo, há apenas sangue\n\n" +
@@ -33,7 +35,8 @@ public class Main {
                         opcao = scam.nextInt();
 
                         if (opcao == 1){
-                            System.out.println("Você perdeu 10 de Stamina, Agora sua Stamina total é: " + perso.Stamina(10)+"\n\n\n"+
+                            perso.Stamina();
+                            System.out.println("Você perdeu 10 de Stamina, Agora sua Stamina total é: " + perso.Stamina+"\n\n\n"+
                             "Desesperado ao escutar os gritos, você vai atrás de seus amigos...\n\n" +
                             "Mas, você ver que cometeu um erro, um que custar sua vida, VOCÊ NÃO VEIO COM SEUS AMIGOS.\n\n" +
                             "Então porque desses gritos?\n\n" + 
@@ -50,8 +53,8 @@ public class Main {
                             int ataque = scam.nextInt();
                                 if (ataque == 1 && d20aliado >= d20inimigo){
                                     System.out.println("Você acertou e causou danos a seu inimigo\n\n");
-                                    monstro.hp(10);
-                                    System.out.println("vida atual do monstro: "+ monstro.hp(0));
+                                    monstro.hp();
+                                    System.out.println("vida atual do monstro: "+ monstro.Hp);
                                     
                                 }
                                 else{
@@ -62,24 +65,25 @@ public class Main {
                                 d20inimigo = dados.d20();
                                 d20aliado = dados.d20();
                                 if(d20inimigo >= d20aliado){
+                                    perso.hp();
+                                    System.out.println("O monstro tentou revidar mas: ");
                                     System.out.println("O inimigo te ataca e te acerta em cheio, você leva 5 de dano");
-                                    System.out.println("Sua vida Atual: "+ perso.hp(5));
+                                    System.out.println("Sua vida Atual: "+ perso.Hp);
                                     
                                 }
                                 else{
-                                    System.out.println("_______________________________________________");
                                     System.out.println("O monstro tentou revidar mas: ");
                                     System.out.println("Você esquivou");
-                                    System.out.println("Sua vida Atual: "+ perso.hp(0));
+                                    System.out.println("Sua vida Atual: "+ perso.Hp);
                                     
                                 }
-                                if (monstro.hp(0) <= 0){
+                                if (monstro.Hp <= 0){
                                     System.out.println("_______________________________________________");
                                     System.out.println("Você derrotou o monstro parabéns!");
                                     System.out.println("_______________________________________________");
 
                                     break;
-                                } else if(perso.hp(0) <= 0){
+                                } else if(perso.Hp <= 0){
                                     System.out.println("_______________________________________________");
                                     System.out.println("Você morreu!");
                                     System.out.println("_______________________________________________");
@@ -89,6 +93,7 @@ public class Main {
                                 i++;
                             }
                         }else if(opcao == 2){
+                            perso.Stamina();
                             System.out.println("Você corre e ignora tudo que está a sua volta, você não quer aceitar que todos que você gostavam estão mortos...\n" +
                             "Você no fim, consegue ver uma luz no fim do tunel, felizmente, não é a morte...\n" +
                             "OBRIGADO POR JOGAR!")
@@ -96,6 +101,7 @@ public class Main {
                     
                     }
                     else if(opcao == 1){
+                        perso.Stamina();
                         System.out.println("você começa a ir em direção ao som de água e nela você encontra a saída, porém, entre ela e você exite uma grande cascata de água\n" + 
                         "Ela não parece muito alta para se pular, você pensa que seus amigos vieram por aqui, talvez se sua cabeça não estivesse doendo, você podia ter um melhor raciocinio antes de pular..." +
                         "Veja pelo lado bom, você saiu vivo!, bem não foi completamente inteiro... mas vivo."
